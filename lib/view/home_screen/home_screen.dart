@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:thread/logic/thread_logic.dart';
 import 'package:thread/view/responsive_widget/responsive_widget.dart';
@@ -70,7 +71,16 @@ class OutputThreadWidget extends StatelessWidget {
                     threadLogic.thread[index].toString().length.toString(),
                   ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text("Copied!"),
+                        ),
+                      );
+                      await Clipboard.setData(ClipboardData(
+                        text: threadLogic.thread[index],
+                      ));
+                    },
                     icon: const Icon(
                       Icons.copy,
                     ),
