@@ -104,9 +104,9 @@ class InputThreadWidget extends StatelessWidget {
                 threadLogic.text = value;
               },
               maxLines: 15,
-              decoration:const InputDecoration.collapsed(
+              decoration: const InputDecoration.collapsed(
                 hintText: "paste you tweet",
-                border:  OutlineInputBorder(),
+                border: OutlineInputBorder(),
               ),
             ),
             const SizedBox(
@@ -118,6 +118,7 @@ class InputThreadWidget extends StatelessWidget {
               ),
               onPressed: () {
                 threadLogic.makeThread();
+                threadLogic.text = "";
               },
               child: const Padding(
                 padding: EdgeInsets.all(8.0),
